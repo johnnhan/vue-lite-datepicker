@@ -5,7 +5,6 @@ module.exports = {
   mode: 'development',
   entry: './example/index.js',
   output: {
-    // path: path.resolve(__dirname, 'dist'),
     filename: "bundle.js",
   },
   module: {
@@ -39,4 +38,7 @@ module.exports = {
       'vue': 'vue/dist/vue.common.js'
     }
   },
+  devServer: {
+    stats: 'errors-only'
+  }
 };

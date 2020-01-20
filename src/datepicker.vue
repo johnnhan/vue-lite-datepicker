@@ -37,7 +37,6 @@
 <script>
 import dayjs from "dayjs";
 export default {
-  name: "TimePicker",
   data: function() {
     return {
       pickTime: "",
@@ -61,31 +60,31 @@ export default {
     let reg = /^\d{4}-\d{2}$|^\d{4}-\d{2}-\d{2}$/;
     if (this.params !== undefined) {
       if (
-        this.params.endTime &&
-        this.params.startTime &&
-        this.params.endTime < this.params.startTime
+        this.params.endDate &&
+        this.params.startDate &&
+        this.params.endDate < this.params.startDate
       ) {
-        console.warn("Please ensure your 'startTime' is less than 'endTime'");
+        console.warn("Please ensure your 'startDate' is less than 'endDate'");
       } else {
-        if (this.params.startTime) {
-          if (reg.test(this.params.startTime)) {
-            this.startYearMonth = this.params.startTime.substr(0, 7);
-            this.startDay = this.params.startTime.substr(8, 2) || 1;
+        if (this.params.startDate) {
+          if (reg.test(this.params.startDate)) {
+            this.startYearMonth = this.params.startDate.substr(0, 7);
+            this.startDay = this.params.startDate.substr(8, 2) || 1;
           } else {
             console.warn(
-              "Please ensure your format of parameter 'startTime' like as 'YYYY-MM-DD' or 'YYYY-MM'"
+              "Please ensure your format of parameter 'startDate' like as 'YYYY-MM-DD' or 'YYYY-MM'"
             );
           }
         }
-        if (this.params.endTime) {
-          if (reg.test(this.params.endTime)) {
-            this.endYearMonth = this.params.endTime.substr(0, 7);
+        if (this.params.endDate) {
+          if (reg.test(this.params.endDate)) {
+            this.endYearMonth = this.params.endDate.substr(0, 7);
             this.endDay =
-              this.params.endTime.substr(8, 2) ||
-              dayjs(this.params.endTime).daysInMonth();
+              this.params.endDate.substr(8, 2) ||
+              dayjs(this.params.endDate).daysInMonth();
           } else {
             console.warn(
-              "Please ensure your format of parameter 'endTime' like as 'YYYY-MM-DD' or 'YYYY-MM'"
+              "Please ensure your format of parameter 'endDate' like as 'YYYY-MM-DD' or 'YYYY-MM'"
             );
           }
         }
@@ -184,7 +183,7 @@ export default {
       let moment = dayjs(this.panelTime);
       moment = moment.date(day);
       this.pickTime = this.formatTimeYMD(moment);
-      this.$emit("emit-info", this.pickTime);
+      this.$emit("change", this.pickTime);
       this.panelStatus = false;
     },
     dayStyle(day) {
@@ -215,9 +214,9 @@ export default {
       let moment = dayjs();
       this.realTime = this.formatTimeYMD(moment);
       let tempTime = this.formatTimeYM(moment);
-      if (this.startYearMonth && this.params.startTime > this.realTime) {
+      if (this.startYearMonth && this.params.startDate > this.realTime) {
         this.panelTime = this.startYearMonth;
-      } else if (this.endYearMonth && this.params.endTime < this.realTime) {
+      } else if (this.endYearMonth && this.params.endDate < this.realTime) {
         this.panelTime = this.endYearMonth;
       } else {
         this.panelTime = tempTime;
@@ -227,7 +226,7 @@ export default {
       if (e) {
         e.stopPropagation();
         this.pickTime = this.realTime;
-        this.$emit("emit-info", this.pickTime);
+        this.$emit("change", this.pickTime);
       }
     }
   }
@@ -293,7 +292,7 @@ export default {
 }
 .jh-no-select {
   cursor: default;
-  color: #999;
+  color: #ccc;
 }
 .jh-select-style {
   color: #fff;

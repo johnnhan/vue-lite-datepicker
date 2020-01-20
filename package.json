@@ -1,6 +1,7 @@
 {
   "name": "vue-lite-datepicker",
-  "version": "1.1.0",
+  "version": "1.1.1",
+  "author": "johnhan",
   "description": "A lightweight datepicker component based vue 2.x",
   "main": "vue-lite-datepicker.umd.js",
   "repository": {
@@ -17,8 +18,6 @@
     "test": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
-  "author": "john han",
-  "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
