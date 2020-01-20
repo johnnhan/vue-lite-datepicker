@@ -1,11 +1,21 @@
 {
-  "name": "vueproject",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "vue-lite-datepicker",
+  "version": "1.1.0",
+  "description": "A lightweight datepicker component based vue 2.x",
+  "main": "vue-lite-datepicker.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnnhan/vue-lite-datepicker.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "lite",
+    "datepicker"
+  ],
   "scripts": {
-    "dev-server": "webpack-dev-server",
-    "start": "webpack"
+    "test": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "john han",
   "license": "ISC",
@@ -16,6 +26,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
+    "extract-loader": "^3.1.0",
+    "file-loader": "^5.0.2",
+    "html-loader": "^0.5.5",
     "mini-css-extract-plugin": "^0.4.0",
     "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
@@ -25,7 +38,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "moment": "^2.22.2",
+    "dayjs": "^1.8.19",
     "vue": "^2.5.16"
   }
 }
